@@ -14,7 +14,6 @@
   width: 6.25%;
 }
 
-.grid:hover {
+.mouseover {
   background-color: black;
 }
-
