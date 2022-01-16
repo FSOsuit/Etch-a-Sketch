@@ -20,3 +20,11 @@ grids.forEach((grid) => {
     grid.classList.add('mouseover');
   })
 });
+
+const button = document.querySelector('.resetBtn');
+button.addEventListener('click', () => {
+  console.log("reset");
+  grids.forEach((grid) => {
+    grid.classList.remove('mouseover');
+  });
+});
