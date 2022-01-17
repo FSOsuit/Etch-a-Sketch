@@ -1,16 +1,27 @@
 const container = document.querySelector('.container');
-let sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
-//creates a grid 16 x 16
-for (let i = 1; i <= sizeOfGrid; i++) {
-  for (let j = 1; j <= sizeOfGrid; j++) {
-    const grid = document.createElement('div');
-    grid.classList.add('grid');
-    let widthOfGrid = 100 / sizeOfGrid;
-    let heightOfGrid = 100 / sizeOfGrid; 
-    grid.setAttribute('style', `width: ${widthOfGrid}%; height: ${heightOfGrid}%`);
-    container.appendChild(grid);
-  }
+let sizeOfGrid;
+let correctSize = false;
+while (correctSize === false) {
+  sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
+  if (sizeOfGrid <= 100 && sizeOfGrid > 0) {
+    correctSize = true;
+    for (let i = 1; i <= sizeOfGrid; i++) {
+      for (let j = 1; j <= sizeOfGrid; j++) {
+        const grid = document.createElement('div');
+        grid.classList.add('grid');
+        let widthOfGrid = 100 / sizeOfGrid;
+        let heightOfGrid = 100 / sizeOfGrid; 
+        grid.setAttribute('style', `width: ${widthOfGrid}%; height: ${heightOfGrid}%`);
+        container.appendChild(grid);
+      }
+    }
+  } else {
+      alert("Enter correct size.")
+    }
 }
+
+
+
 
 //chages color of each moused over div
 const grids = document.querySelectorAll('.grid');
