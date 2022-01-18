@@ -13,10 +13,11 @@ function drawGrid(sizeOfGrid) {
   }
 }
 
-function deleteGrid(gridElements) {
-  gridElements.forEach((grid) => {
+function deleteGrid() {
+  const oldGrid = document.querySelectorAll('.grid');
+  oldGrid.forEach((grid) => {
     grid.remove();
-  });
+  })
 }
 
 let sizeOfGrid = 16;
