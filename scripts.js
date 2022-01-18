@@ -19,19 +19,8 @@ function deleteGrid(gridElements) {
   });
 }
 
-let sizeOfGrid;
-let correctSize = false;
-while (correctSize === false) {
-  sizeOfGrid = prompt("Enter size of the grid from 1 to 100"); //asks for size
-  if (sizeOfGrid <= 100 && sizeOfGrid > 0) {
-    correctSize = true; //check if input size is correct 
-    //draws grid of input size
-    drawGrid(sizeOfGrid);
-  } else {
-      alert("Enter correct size.")
-    }
-}
-
+let sizeOfGrid = 16;
+drawGrid(sizeOfGrid);
 
 
 
@@ -48,7 +37,11 @@ const button = document.querySelector('.resetBtn');
 button.addEventListener('click', () => {
   deleteGrid(grids);
   sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
+  while (sizeOfGrid <= 0 || sizeOfGrid > 100) {
+    sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
+  }
   drawGrid(sizeOfGrid);
+  //draws new grid
   const newGrids = document.querySelectorAll('.grid');
   newGrids.forEach((newGrid) => {
     newGrid.addEventListener('mouseover', () => {
