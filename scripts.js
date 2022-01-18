@@ -1,5 +1,7 @@
 const container = document.querySelector('.container');
+const grids = document.querySelectorAll('.grid');
 
+//draws grid
 function drawGrid(sizeOfGrid) {
   for (let i = 1; i <= sizeOfGrid; i++) {
     for (let j = 1; j <= sizeOfGrid; j++) {
@@ -13,41 +15,41 @@ function drawGrid(sizeOfGrid) {
   }
 }
 
+//deletes grid
 function deleteGrid() {
   const oldGrid = document.querySelectorAll('.grid');
   oldGrid.forEach((grid) => {
     grid.remove();
-  })
+  });
 }
 
-let sizeOfGrid = 16;
-drawGrid(sizeOfGrid);
+//adds event listener to each created div in grid
+function colorGrid() {
+  const currentGrid = document.querySelectorAll('.grid');
+  currentGrid.forEach((grid) => {
+    grid.addEventListener('mouseover', () => {
+      grid.classList.add('mouseover');
+    });
+  });
+}
+
+let sizeOfGrid = 16; // starting grid size
+drawGrid(sizeOfGrid); // draws initial grid
 
 
 
-//chages color of each moused over div
-const grids = document.querySelectorAll('.grid');
-grids.forEach((grid) => {
-  grid.addEventListener('mouseover', () => {
-    grid.classList.add('mouseover');
-  })
-});
+//chages color of each moused over initial div
+colorGrid();
 
 //resets the grid
 const button = document.querySelector('.resetBtn');
 button.addEventListener('click', () => {
-  deleteGrid(grids);
+  deleteGrid(grids); //removes grid
   sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
   while (sizeOfGrid <= 0 || sizeOfGrid > 100) {
     sizeOfGrid = prompt("Enter size of the grid from 1 to 100");
   }
-  drawGrid(sizeOfGrid);
-  //draws new grid
-  const newGrids = document.querySelectorAll('.grid');
-  newGrids.forEach((newGrid) => {
-    newGrid.addEventListener('mouseover', () => {
-      newGrid.classList.add('mouseover');
-    })
-  })
+  drawGrid(sizeOfGrid); //draws new grid
+  colorGrid(); //allows color the new grid
 });
 
