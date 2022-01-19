@@ -33,6 +33,26 @@ function colorGrid() {
   });
 }
 
+// darker color
+function colorGridDarker() {
+  const currentGrid = document.querySelectorAll('.grid');
+  let opacity = 0;
+  let widthOfGrid = 100 / sizeOfGrid;
+  let heightOfGrid = 100 / sizeOfGrid; 
+  currentGrid.forEach((grid) => {
+    grid.addEventListener('mouseover', () => {
+      grid.classList.add('mouseover');
+      if (opacity >= 0.999999999999) {
+        opacity = 0;
+        grid.setAttribute('style', `width: ${widthOfGrid}%; height: ${heightOfGrid}%; opacity: ${opacity + 0.1}`);
+      } else {
+        grid.setAttribute('style', `width: ${widthOfGrid}%; height: ${heightOfGrid}%; opacity: ${opacity + 0.1}`);
+      }
+      opacity += 0.1;
+    });
+  });
+}
+
 let sizeOfGrid = 16; // starting grid size
 drawGrid(sizeOfGrid); // draws initial grid
 
@@ -53,3 +73,8 @@ button.addEventListener('click', () => {
   colorGrid(); //allows color the new grid
 });
 
+//button for darker color
+const buttonDarker = document.querySelector('.darker');
+buttonDarker.addEventListener('click', () => {
+  colorGridDarker();
+});
