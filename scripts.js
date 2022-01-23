@@ -53,6 +53,28 @@ function colorGridDarker() {
   });
 }
 
+//function to get random number 
+function randomNumberRGB () {
+  const max = 256;
+  const randomNumber = Math.floor(Math.random() * max);
+  return randomNumber;
+}
+
+//random color function
+function randomColor() {
+  const currentGrid = document.querySelectorAll('.grid');
+  let widthOfGrid = 100 / sizeOfGrid;
+  let heightOfGrid = 100 / sizeOfGrid;
+  currentGrid.forEach((grid) => {
+    const R = randomNumberRGB();
+    const G = randomNumberRGB();
+    const B = randomNumberRGB();
+    grid.addEventListener('mouseover', () => {
+      grid.setAttribute('style', `width: ${widthOfGrid}%; height: ${heightOfGrid}%; background: rgb(${R},${G},${B})`);
+    });
+  });
+}
+
 let sizeOfGrid = 16; // starting grid size
 drawGrid(sizeOfGrid); // draws initial grid
 
@@ -77,4 +99,10 @@ button.addEventListener('click', () => {
 const buttonDarker = document.querySelector('.darker');
 buttonDarker.addEventListener('click', () => {
   colorGridDarker();
+});
+
+//random color
+const buttonRand = document.querySelector('.random');
+buttonRand.addEventListener('click', () => {
+  randomColor();
 });
